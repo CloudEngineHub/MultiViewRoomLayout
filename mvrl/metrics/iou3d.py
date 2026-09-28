@@ -75,4 +75,6 @@ def iou3d(layout1: Layout, layout2: Layout) -> float:
         visualize_mesh("union", union, albedo_factor=[74, 78, 77, 128])
         breakpoint()
 
-    return intersection.volume() / union.volume()
+    iou = intersection.volume() / union.volume()
+    assert 0.0 <= iou <= 1.0, f"Invalid IoU: {iou:.2f}"
+    return iou
